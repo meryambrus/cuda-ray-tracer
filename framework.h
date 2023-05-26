@@ -1,3 +1,6 @@
+/// Framework made by the Computer Graphics Group of The
+/// Department of Control Engineering and Information Technology
+/// at the Budapest University of Technology and Economics
 #pragma once
 
 #define _USE_MATH_DEFINES		// M_PI
