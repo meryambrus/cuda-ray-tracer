@@ -3,7 +3,7 @@
 #include "framework.h"
 
 struct Material {
-	vec3 ka, kd; //ambient, diffuse color
+	vec3 ka, kd, ks; //ambient, diffuse, specular color
 	float shininess;
 	float roughness;
 

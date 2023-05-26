@@ -69,9 +69,6 @@ __device__ vec3 trace(const Ray& ray, int depth) {
 }
 
 
-
-
-
 __global__ void renderWithPolymorphism(Camera camera, Intersectable*** objects, int num_objects, Light* lights, int num_lights, vec3* frameBuffer, int width, int height) {
 
 	if ((blockIdx.x * blockDim.x) + threadIdx.x > width || (blockIdx.y * blockDim.y) + threadIdx.y > height) return;
