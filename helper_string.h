@@ -29,6 +29,8 @@
 #ifndef COMMON_HELPER_STRING_H_
 #define COMMON_HELPER_STRING_H_
 
+#pragma once
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>

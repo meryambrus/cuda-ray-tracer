@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Hit.h"
+#include "Hit.cuh"
 #include "Ray.cuh"
 
 class Intersectable {

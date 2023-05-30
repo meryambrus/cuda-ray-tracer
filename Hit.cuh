@@ -8,5 +8,5 @@ struct Hit {
 
 	Material* material = nullptr;
 
-	__host__ __device__ Hit() { t = -1; }
+	__host__ __device__ Hit();
 };

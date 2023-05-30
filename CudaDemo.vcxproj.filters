@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="Triangle.cu">
+      <Filter>Triangle</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Camera.cu">
+      <Filter>Camera</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Hit.cu">
+      <Filter>Hit</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Plane.cu">
+      <Filter>Plane</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Ray.cu">
+      <Filter>Ray</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Light.cu">
+      <Filter>Light</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Scene.cu">
+      <Filter>Scene</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Sphere.cu">
+      <Filter>Sphere</Filter>
+    </CudaCompile>
+    <CudaCompile Include="RenderFrameCuda.cu">
+      <Filter>RenderFrameCuda</Filter>
+    </CudaCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CallbackFunctions.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="FullScreenTexturedQuadq.h" />
+    <ClInclude Include="Intersectable.cuh" />
+    <ClInclude Include="LaunchOptions.cuh" />
+    <ClInclude Include="helper_cuda.h" />
+    <ClInclude Include="helper_math_functions.h" />
+    <ClInclude Include="helper_string.h" />
+    <ClInclude Include="ShapeData.cuh" />
+    <ClInclude Include="Triangle.cuh">
+      <Filter>Triangle</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.cuh">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Hit.cuh">
+      <Filter>Hit</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.cuh">
+      <Filter>Plane</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.cuh">
+      <Filter>Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.cuh">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.cuh">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.cuh">
+      <Filter>Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderFrameCuda.cuh">
+      <Filter>RenderFrameCuda</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Triangle">
+      <UniqueIdentifier>{e3b182d7-7881-42ee-b67f-601a02e12a7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{899d9d90-d098-4c40-b23e-92a404d7f1b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hit">
+      <UniqueIdentifier>{8d23b297-6aff-4d0d-82fe-a14da703c648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Material">
+      <UniqueIdentifier>{0ebd79f5-f51c-4a51-846b-bcb9be4ab743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plane">
+      <UniqueIdentifier>{aa115e85-37d6-4c9e-8914-a0d7543e93a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ray">
+      <UniqueIdentifier>{f45ff503-bf66-4ef4-9562-32bbd85f8d66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Light">
+      <UniqueIdentifier>{28b62aed-6066-43d8-9b98-ac183bd06772}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{6b56b85e-a19a-414e-8a14-73034548ef3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sphere">
+      <UniqueIdentifier>{b35fc8d1-1c19-4455-bc83-a1d339897444}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RenderFrameCuda">
+      <UniqueIdentifier>{ffc4ad6d-f9a0-43be-876d-6271be8943b5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Material.cpp">
+      <Filter>Material</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

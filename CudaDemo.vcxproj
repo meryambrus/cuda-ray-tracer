@@ -62,7 +62,8 @@
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
-      <Include>D:\C++\Libraries\glfw-3.3.8.bin.WIN64\include;%(Include)</Include>
+      <Include>D:\C++\Libraries\glew-2.1.0\include\;D:\C++\Libraries\freeglut\include\;D:\C++\Projektek\CudaDemo;%(Include)</Include>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -72,6 +73,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -88,10 +90,21 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <HostDebugInfo>true</HostDebugInfo>
       <GenerateLineInfo>false</GenerateLineInfo>
+      <Include>D:\C++\Libraries\glew-2.1.0\include\;D:\C++\Libraries\freeglut\include\;D:\C++\Projektek\CudaDemo;%(Include)</Include>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <CudaCompile Include="Camera.cu" />
+    <CudaCompile Include="Hit.cu" />
     <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="Light.cu" />
+    <CudaCompile Include="Plane.cu" />
+    <CudaCompile Include="Ray.cu" />
+    <CudaCompile Include="RenderFrameCuda.cu" />
+    <CudaCompile Include="Scene.cu" />
+    <CudaCompile Include="Sphere.cu" />
+    <CudaCompile Include="Triangle.cu" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CallbackFunctions.h" />
@@ -102,17 +115,20 @@
     <ClInclude Include="LaunchOptions.cuh" />
     <ClInclude Include="Light.cuh" />
     <ClInclude Include="Plane.cuh" />
-    <ClInclude Include="RenderFrameCuda.h" />
+    <ClInclude Include="RenderFrameCuda.cuh" />
     <ClInclude Include="helper_cuda.h" />
     <ClInclude Include="helper_math_functions.h" />
     <ClInclude Include="helper_string.h" />
-    <ClInclude Include="Hit.h" />
+    <ClInclude Include="Hit.cuh" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Ray.cuh" />
     <ClInclude Include="Scene.cuh" />
     <ClInclude Include="ShapeData.cuh" />
     <ClInclude Include="Sphere.cuh" />
     <ClInclude Include="Triangle.cuh" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Material.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
