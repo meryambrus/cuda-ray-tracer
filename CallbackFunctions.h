@@ -109,7 +109,7 @@ void onDisplay() {
     long timeStart = glutGet(GLUT_ELAPSED_TIME);
 
     //render here
-    scene->renderNew(image);
+    scene->render(image);
 
     long timeEnd = glutGet(GLUT_ELAPSED_TIME);
     printf("Rendering time: %d milliseconds\n", (timeEnd - timeStart));

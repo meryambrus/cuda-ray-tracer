@@ -1,3 +1,6 @@
+/// Framework made by the Computer Graphics Group of The
+/// Department of Control Engineering and Information Technology
+/// at the Budapest University of Technology and Economics
 #pragma once
 
 #define _USE_MATH_DEFINES		// M_PI
@@ -9,6 +12,10 @@
 
 #include "D:\C++\Libraries\glew-2.1.0\include\GL\glew.h"
 #include "D:\C++\Libraries\freeglut\include\GL\freeglut.h"
+
+#include "cuda.h"
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
 
 struct vec2 {
 

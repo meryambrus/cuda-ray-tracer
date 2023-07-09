@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Material.h"
+#include "Material.cuh"
 
 struct Hit {
 	float t;
@@ -8,5 +8,5 @@ struct Hit {
 
 	Material* material = nullptr;
 
-	__host__ __device__ Hit() { t = -1; }
+	__host__ __device__ Hit();
 };
