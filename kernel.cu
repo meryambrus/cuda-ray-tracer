@@ -14,7 +14,8 @@
 
 const int WINDOW_WIDTH = 1600;
 const int WINDOW_HEIGHT = 900;
-const float EPSILON = 1e-6;
+const float Epsilon = 1e-6;
+#define EPSILON = 1e-6;
 
 
 int main(int argc, char* argv[]) {

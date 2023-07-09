@@ -5,7 +5,7 @@
 #include "Hit.cuh"
 #include "Camera.cuh"
 #include "Intersectable.cuh"
-#include "ShapeData.cuh"
+#include "Light.cuh"
 
 extern const int WINDOW_WIDTH;
 extern const int WINDOW_HEIGHT;

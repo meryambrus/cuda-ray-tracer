@@ -24,6 +24,7 @@ public:
 	std::vector<vec3> frame;
 	vec3* dev_framebuffer;
 
+	std::vector<Intersectable*> objects;
 	std::vector<Intersectable**> dev_objects;
 
 	Scene();

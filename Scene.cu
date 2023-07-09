@@ -8,28 +8,31 @@ Scene::Scene() {
 void Scene::build() {
 	camera = new Camera();
 	camera->set(vec3(0.0f, 0.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f), (60.0f / 180.0f) * M_PI);
-	camera->set(vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f), (60.0f / 180.0f) * M_PI);
+	//camera->set(vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f), (60.0f / 180.0f) * M_PI);
 
 	printf("Camera up   : %.2f %.2f %.2f\n", camera->up.x, camera->up.y, camera->up.z);
 	printf("Camera right: %.2f %.2f %.2f\n", camera->right.x, camera->right.y, camera->right.z);
 
-	//spheres.push_back(new Sphere(vec3(1.0f, 0.1f, 0.2f), 0.2f));
-	//spheres.push_back(new Sphere(vec3(1.0f, 0.0f, -0.0f), 0.2f));
+	Material* mat1 = new Material(vec3(0.2f, 0.0f, 0.0f), vec3(0.6f, 0.0f, 0.0f), vec3(1.0f, 1.0f, 1.0f), 100.0f);
+	Material* mat2 = new Material(vec3(0.0f, 0.2f, 0.0f), vec3(0.0f, 0.6f, 0.0f), vec3(1.0f, 1.0f, 1.0f), 32.0f);
+	Material* mat3 = new Material(vec3(0.2f, 0.2f, 0.2f), vec3(0.6f, 0.6f, 0.6f));
 
-	dev_objects.push_back((Intersectable**)Sphere::createOnDevice(vec3(1.0f, 0.1f, 0.4f), 0.2f));
-	dev_objects.push_back((Intersectable**)Sphere::createOnDevice(vec3(1.0f, 0.0f, -0.1f), 0.2f));
+	objects.push_back(new Sphere(vec3(1.0f, 0.1f, 0.4f), 0.2f, mat1));
+	objects.push_back(new Sphere(vec3(1.0f, 0.0f, -0.1f), 0.2f, mat2));
+	objects.push_back(new Plane(vec3(0.0f, -0.2f, 0.0f), vec3(0.0f, 1.0f, 0.0f), mat3));
 
-	//planes.push_back(new Plane(vec3(0.0f, -0.2f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
-
-	dev_objects.push_back((Intersectable**)Plane::createOnDevice(vec3(0.0f, -0.2f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
+	for (auto o : objects) {
+		dev_objects.push_back(o->device_pointer);
+	}
 
 	dev_framebuffer = createFrameBufferOnDevice(WINDOW_WIDTH, WINDOW_HEIGHT);
 	frame.reserve(WINDOW_WIDTH * WINDOW_HEIGHT);
 
-	lights.push_back(new Light(vec3(1.2f, 0.0f, -0.6f), vec3(0.0f, 0.0f, 1.0f), LightType::POINT));
-	lights.push_back(new Light(vec3(0.0f, -1.0f, 1.0f), vec3(0.0f, 0.0f, 0.6f), LightType::DIRECTIONAL));
-	lights.push_back(new Light(vec3(0.0f, -1.0f, -1.0f), vec3(0.6f, 0.0f, 0.0f), LightType::DIRECTIONAL));
-	lights.push_back(new Light(vec3(-1.0f, -1.0f, 0.0f), vec3(0.0f, 0.6f, 0.0f), LightType::DIRECTIONAL));
+	//lights.push_back(new Light(vec3(1.2f, 0.0f, -0.6f), vec3(0.0f, 1.0f, 0.0f), LightType::POINT));
+	lights.push_back(new Light(vec3(0.5f, 0.2f, 0.0f), vec3(1.0f, 1.0f, 1.0f), LightType::POINT));
+	lights.push_back(new Light(vec3(0.0f, -1.0f, 1.0f), vec3(0.5f, 0.5f, 0.5f), LightType::DIRECTIONAL));
+	//lights.push_back(new Light(vec3(0.0f, -1.0f, -1.0f), vec3(0.6f, 0.0f, 0.0f), LightType::DIRECTIONAL));
+	//lights.push_back(new Light(vec3(-1.0f, -1.0f, 0.0f), vec3(0.0f, 0.6f, 0.0f), LightType::DIRECTIONAL));
 }
 
 vec3* Scene::createFrameBufferOnDevice(int width, int height) {
@@ -105,4 +108,7 @@ void Scene::render(std::vector<vec4>& image) {
 
 Scene::~Scene() {
 	cudaFree(dev_framebuffer);
+	for (auto o : objects) {
+		delete o;
+	}
 }

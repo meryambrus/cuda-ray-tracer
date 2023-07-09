@@ -29,17 +29,19 @@
     <CudaCompile Include="RenderFrameCuda.cu">
       <Filter>RenderFrameCuda</Filter>
     </CudaCompile>
+    <CudaCompile Include="Intersectable.cu">
+      <Filter>Intersectable</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Material.cu">
+      <Filter>Material</Filter>
+    </CudaCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CallbackFunctions.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="FullScreenTexturedQuadq.h" />
-    <ClInclude Include="Intersectable.cuh" />
     <ClInclude Include="LaunchOptions.cuh" />
     <ClInclude Include="helper_cuda.h" />
     <ClInclude Include="helper_math_functions.h" />
     <ClInclude Include="helper_string.h" />
-    <ClInclude Include="ShapeData.cuh" />
     <ClInclude Include="Triangle.cuh">
       <Filter>Triangle</Filter>
     </ClInclude>
@@ -49,7 +51,7 @@
     <ClInclude Include="Hit.cuh">
       <Filter>Hit</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
+    <ClInclude Include="Material.cuh">
       <Filter>Material</Filter>
     </ClInclude>
     <ClInclude Include="Plane.cuh">
@@ -69,6 +71,12 @@
     </ClInclude>
     <ClInclude Include="RenderFrameCuda.cuh">
       <Filter>RenderFrameCuda</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersectable.cuh">
+      <Filter>Intersectable</Filter>
+    </ClInclude>
+    <ClInclude Include="CallbackFunctions.h">
+      <Filter>CallbackFunctions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -102,10 +110,11 @@
     <Filter Include="RenderFrameCuda">
       <UniqueIdentifier>{ffc4ad6d-f9a0-43be-876d-6271be8943b5}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Material.cpp">
-      <Filter>Material</Filter>
-    </ClCompile>
+    <Filter Include="Intersectable">
+      <UniqueIdentifier>{746c38e7-9260-467f-8f13-786bea0bb782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CallbackFunctions">
+      <UniqueIdentifier>{a9de8a5d-9290-4a89-b692-bfb90a95bbb5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -81,18 +81,31 @@ __global__ void renderGPU(Camera camera, Intersectable*** objects, int num_objec
 
 	if (firstHit.t >= 0.0f) {
 
-		vec3 color = vec3(0.6f, 0.6f, 0.6f) * dot(ray.dir, firstHit.normal);
+		//ambient
+		vec3 color = firstHit.material->ka;
 
 		for (int k = 0; k < num_lights; k++) {
 			Light& light = lights[k];
 
+			//directional light
 			if (light.isDirectional) {
 				Ray lightRay = Ray(firstHit.position + (-light.pos_dir) * epsilon, -light.pos_dir);
 
 				if (!DirectionalLightShadowed(objects, num_objects, lightRay)) {
-					color = color + light.color * dot(light.pos_dir, firstHit.normal);
+					//diffuse
+					color = color + light.color * firstHit.material->kd * dot(light.pos_dir, firstHit.normal);
+
+					//Blinn-Phong specular
+					vec3 halfway = normalize(lightRay.dir + ray.dir);
+					float cosDelta = dot(halfway, firstHit.normal);
+
+					if (cosDelta > 0.0f) {
+						color = color + light.color * firstHit.material->ks * powf(cosDelta, firstHit.material->shininess);
+					}
 				}
 			}
+
+			//point light
 			else {
 				Ray lightRay = Ray(light.pos_dir, normalize(firstHit.position - light.pos_dir));
 
@@ -104,7 +117,16 @@ __global__ void renderGPU(Camera camera, Intersectable*** objects, int num_objec
 
 					float intensity = 1.0f / (distance * distance);
 
-					color = color + light.color * dot(lightHit.normal, lightRay.dir) * intensity;
+					//diffuse
+					color = color + light.color * firstHit.material->kd * dot(lightHit.normal, lightRay.dir) * intensity;
+
+					//Blinn-Phong specular
+					vec3 halfway = normalize(lightRay.dir + ray.dir);
+					float cosDelta = dot(halfway, firstHit.normal);
+
+					if (cosDelta > 0.0f) {
+						color = color + light.color * firstHit.material->ks * powf(cosDelta, firstHit.material->shininess) * intensity;
+					}
 				}
 			}
 
